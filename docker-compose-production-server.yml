@@ -1,0 +1,19 @@
+
+version: "3.8"
+
+services:
+  server:
+    container_name: server
+    restart: unless-stopped
+    image: server-production:2.0.0
+    build:
+      context: server
+      target: production
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
